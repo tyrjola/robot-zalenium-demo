@@ -1,0 +1,37 @@
+version: '2'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: resources/docker/server/Dockerfile
+    ports:
+      - "7272:7272"
+    command: ["7272"]
+
+  zalenium:
+    build:
+      context: .
+      dockerfile: resources/docker/zalenium/Dockerfile
+    depends_on:
+      - server
+    ports:
+      - "4444:4444"
+    volumes:
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/videos:/home/seluser/videos
+    command: ["start", "--chromeContainers", "1"]
+
+  robot:
+    build:
+      context: .
+      dockerfile: resources/docker/robot/Dockerfile
+    depends_on:
+      - zalenium
+    environment:
+      - SELENIUM_URL=http://zalenium:4444/wd/hub
+      - SERVER_URL=http://server:7272
+      - BROWSER=chrome
+    volumes:
+      - ./test/robot:/home/robot/test/robot
+      - ./test/logs:/home/robot/test/logs
