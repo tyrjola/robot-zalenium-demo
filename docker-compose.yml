@@ -20,7 +20,11 @@ services:
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/videos:/home/seluser/videos
-    command: ["start", "--screenWidth", "1920", "--screenHeight", "1080"]
+    command: ["start",
+              "--screenWidth", "1920",
+              "--screenHeight", "1080",
+              "--chromeContainers", "0",
+              "--firefoxContainers", "0"]
 
   robot:
     build:
