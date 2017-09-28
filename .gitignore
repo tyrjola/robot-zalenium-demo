@@ -2,4 +2,4 @@
 *.swp
 *.log
 .cache/
-logs/*
+test/logs/*
