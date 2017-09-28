@@ -20,7 +20,7 @@ services:
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/videos:/home/seluser/videos
-    command: ["start", "--chromeContainers", "1"]
+    command: ["start", "--screenWidth", "1920", "--screenHeight", "1080"]
 
   robot:
     build:
@@ -30,6 +30,7 @@ services:
       - zalenium
     environment:
       - SELENIUM_URL=http://zalenium:4444/wd/hub
+      - SELENIUM_SPEED=1
       - SERVER_URL=http://server:7272
       - BROWSER=chrome
     volumes:
