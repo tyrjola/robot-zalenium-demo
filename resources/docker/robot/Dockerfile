@@ -12,7 +12,6 @@ ADD resources/scripts/wait-for-url.sh .
 RUN pip install -r requirements.txt
 
 RUN chown -R robot:robot /home/robot
-RUN chmod -R go+w /home/robot/test
 
 USER robot
 
