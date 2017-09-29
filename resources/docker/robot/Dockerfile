@@ -16,4 +16,4 @@ RUN chown -R robot:robot /home/robot
 
 USER robot
 
-ENTRYPOINT ./wait-for-url.sh ${SELENIUM_URL} ./run_tests.sh
+ENTRYPOINT ./wait-for-url.sh ${SELENIUM_URL} ${STATUS_MATCHER} ./run_tests.sh

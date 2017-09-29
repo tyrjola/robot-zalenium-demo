@@ -3,7 +3,6 @@
 Library  SeleniumLibrary
 Suite Setup  Open Login Page
 Suite Teardown  Close Browser
-Test Teardown  Test Cleanup
 
 *** Variables ***
 
@@ -25,9 +24,7 @@ Successful Login
 *** Keywords ***
 
 Open Login Page
-  Register Keyword To Run On Failure  ${EMPTY}
-  Wait Until Keyword Succeeds  10x  2s  Open Browser  url=${SERVER_URL}  browser=${BROWSER}  remote_url=${SELENIUM_URL}
-  Register Keyword To Run On Failure  Capture Page Screenshot
+  Open Browser  url=${SERVER_URL}  browser=${BROWSER}  remote_url=${SELENIUM_URL}
   Set Selenium Speed  ${SELENIUM_SPEED}
   Set Window Size  ${SCREEN_WIDTH}  ${SCREEN_HEIGHT}
 
@@ -42,6 +39,3 @@ Click Login Button
 
 Welcome Page Should Be Open
   Title Should Be  Welcome Page
-
-Test Cleanup
-  Register Keyword To Run On Failure  Capture Page Screenshot

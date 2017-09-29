@@ -30,7 +30,8 @@ services:
     depends_on:
       - zalenium
     environment:
-      - SELENIUM_URL=http://zalenium:4444/wd/hub
+      - SELENIUM_URL=http://zalenium:4444/wd/hub/status
+      - STATUS_MATCHER="ready":true
     volumes:
       - ./test/robot:/home/robot/test/robot
       - ./test/logs:/home/robot/test/logs
