@@ -7,10 +7,12 @@ Test Teardown  Test Cleanup
 
 *** Variables ***
 
-${BROWSER}  chrome
-${SERVER_URL}  http://localhost:7272
+${BROWSER}
+${SERVER_URL}
 ${SELENIUM_URL}
-${SELENIUM_SPEED}  0
+${SELENIUM_SPEED}
+${SCREEN_WIDTH}
+${SCREEN_HEIGHT}
 
 *** Test cases ***
 
@@ -27,7 +29,7 @@ Open Login Page
   Wait Until Keyword Succeeds  10x  2s  Open Browser  url=${SERVER_URL}  browser=${BROWSER}  remote_url=${SELENIUM_URL}
   Register Keyword To Run On Failure  Capture Page Screenshot
   Set Selenium Speed  ${SELENIUM_SPEED}
-  Set Window Size  1920  1080
+  Set Window Size  ${SCREEN_WIDTH}  ${SCREEN_HEIGHT}
 
 Enter Username
   Input Text  id=username_field  demo
