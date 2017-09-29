@@ -8,7 +8,7 @@ ADD test/robot ./robot
 ADD test/variables.py .
 ADD test/requirements.txt .
 ADD test/run_tests.sh .
-ADD resources/scripts/wait-for-url.sh .
+ADD resources/scripts/wait-for-selenium.sh .
 
 RUN pip install -r requirements.txt
 
@@ -16,4 +16,4 @@ RUN chown -R robot:robot /home/robot
 
 USER robot
 
-ENTRYPOINT ./wait-for-url.sh ${SELENIUM_URL} ${STATUS_MATCHER} ./run_tests.sh
+ENTRYPOINT ./wait-for-selenium.sh ${SELENIUM_URL} ./run_tests.sh
