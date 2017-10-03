@@ -31,6 +31,7 @@ services:
       - zalenium
     environment:
       - SELENIUM_URL=http://zalenium:4444
+      - ROBOT_ARGS
     volumes:
       - ./test/robot:/home/robot/test/robot
       - ./test/logs:/home/robot/test/logs
