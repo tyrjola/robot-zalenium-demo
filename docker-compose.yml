@@ -6,11 +6,7 @@ services:
       dockerfile: resources/docker/server/Dockerfile
 
   zalenium:
-    build:
-      context: .
-      dockerfile: resources/docker/zalenium/Dockerfile
-    depends_on:
-      - server
+    image: dosel/zalenium:3
     ports:
       - "4444:4444"
     volumes:
@@ -28,6 +24,7 @@ services:
       context: .
       dockerfile: resources/docker/robot/Dockerfile
     depends_on:
+      - server
       - zalenium
     environment:
       - SELENIUM_URL=http://zalenium:4444
