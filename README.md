@@ -9,7 +9,19 @@
 ## Running tests
 
 ```
+docker-compose up robot
+```
+
+### Rebuild containers and run tests
+
+```
 docker-compose up --build robot
+```
+
+### Passing arguments to robot
+
+```
+ROBOT_ARGS="-v BROWSER:firefox -v SELENIUM_SPEED:2" docker-compose up robot
 ```
 
 ## Stop environment
